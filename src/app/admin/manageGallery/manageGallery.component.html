@@ -1,0 +1,57 @@
+<app-nav></app-nav>
+
+<div class="admin-gallery-wrapper">
+  <h1>Qubit Gallery</h1>
+  <h2>🖼️ Add New Gallery Item</h2>
+
+  <form (ngSubmit)="onSubmit()" #galleryForm="ngForm" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="image">Image File</label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        (change)="onImageSelect($event)"
+        accept="image/*"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="alt">Image Alt Text</label>
+      <input
+        type="text"
+        id="alt"
+        name="alt"
+        [(ngModel)]="newEntry.alt"
+        required
+        placeholder="e.g. Core Team Group Photo"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="caption">Caption</label>
+      <input
+        type="text"
+        id="caption"
+        name="caption"
+        [(ngModel)]="newEntry.caption"
+        required
+        placeholder="e.g. Quantum Meetup March 2025"
+      />
+    </div>
+
+    <button type="submit" [disabled]="!galleryForm.form.valid || !selectedImage">
+      Upload to Gallery
+    </button>
+
+    <div *ngIf="uploadMsg" class="upload-status">
+      {{ uploadMsg }}
+    </div>
+  </form>
+
+  <div class="preview-section" *ngIf="previewUrl">
+    <h4>📸 Preview</h4>
+    <img [src]="previewUrl" [alt]="newEntry.alt" />
+  </div>
+</div>

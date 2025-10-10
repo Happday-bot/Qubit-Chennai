@@ -1,0 +1,21 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <h1>Import Blog Metadata</h1>
+
+  <form (ngSubmit)="fetchMetadata()" #blogForm="ngForm" class="form-card">
+    <label for="url">Enter Blog / Article URL</label>
+    <input
+      type="url"
+      id="url"
+      name="url"
+      [(ngModel)]="blogUrl"
+      placeholder="https://medium.com/@username/article-title"
+      required
+    />
+    <button type="submit" [disabled]="isLoading">Import</button>
+  </form>
+
+  <div *ngIf="isLoading" class="loading">Processing...</div>
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

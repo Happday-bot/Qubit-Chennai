@@ -1,0 +1,121 @@
+<nav class="navbar">
+  <div class="logo">Qubit Club</div>
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/blog">Blog</a></li>
+    <li><a routerLink="/events">Events</a></li>
+    <li><a routerLink="/gallery">Gallery</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+    <button class="logout" (click)="logout()"> Logout </button>
+  </ul>
+</nav>
+
+<div>
+<div class="dashboard-wrapper">
+  <!-- Sidebar Profile Editor -->
+  <aside class="sidebar">
+    <div class="profile-card">
+      <h2>👤 My Profile</h2>
+      <button class="edit-btn" (click)="toggleEdit()">
+        {{ isEditing ? 'Cancel' : 'Edit Profile' }}
+      </button>
+
+      <form (ngSubmit)="onSave()" #profileForm="ngForm">
+        <div class="form-grid">
+          <label>
+            Full Name
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="profile.name"
+              [disabled]="!isEditing"
+              required
+            />
+          </label>
+
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="profile.email"
+              disabled
+            />
+          </label>
+
+          <label>
+            Phone Number
+            <input
+              type="tel"
+              name="phone"
+              [(ngModel)]="profile.phone"
+              [disabled]="!isEditing"
+            />
+          </label>
+
+          <label>
+            Department
+            <input
+              type="text"
+              name="department"
+              [(ngModel)]="profile.institution"
+              [disabled]="!isEditing"
+            />
+          </label>
+
+          <label>
+            Position
+            <select
+              name="position"
+              [(ngModel)]="profile.position"
+              [disabled]="!isEditing"
+              required
+            >
+              <option value="">Select</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+              <option>Reseach Scholar</option>
+              <option>Faculty</option>
+              <option>Strategist</option>
+            </select>
+          </label>
+        </div>
+
+        <button type="submit" [disabled]="!isEditing || !profileForm.form.valid">
+          Save Changes
+        </button>
+      </form>
+
+      <div *ngIf="successMsg" class="success-msg">
+        {{ successMsg }}
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content for Events -->
+  <main class="main-content">
+    <div class="marker" style="top: 20%; left: 18%;"><a href="https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information" target="_blank" rel="noopener noreferrer"><img src="/assets/images/basics.jpg" height="80px"> </a><br>Basics of<br> Quantum<br> computing</div>
+    <div class="marker" style="top: 20%; left: 33%;"><a href="https://roadmap.sh/python" target="_blank" rel="noopener noreferrer"><img src="/assets/images/python.png" height="60px"></a> <br>Python</div>
+    <div class="marker" style="top: 40%; left: 42%;"><a href="https://quantum.cloud.ibm.com/docs/en/guides" target="_blank" rel="noopener noreferrer"><img src="/assets/images/qiskit.jpg" width="80px"></a> <br>Qiskit <br>Library</div>
+    <div class="marker" style="top: 40%; left: 58%;"><a href="https://www.ibm.com/training/certification/ibm-certified-quantum-computation-using-qiskit-v2x-developer-associate-C9008400" target="_blank" rel="noopener noreferrer"><img src="/assets/images/v2_0.png" width="80px"></a> <br>Developer <br>Certification<br>V2.0x</div>
+    <div class="marker" style="top: 68%; left: 60%;"><a href="https://www.google.com/search?q=qiskit+global+summer+school&sca_esv=7c35263d5fad34ab&sxsrf=AE3TifMMkCAKJV2J02SESOgKPQqbuvsQmQ%3A1759673335338&ei=93viaLe0FN-d4-EPj5KakAs&oq=ibm+summer+school&gs_lp=Egxnd3Mtd2l6LXNlcnAiEWlibSBzdW1tZXIgc2Nob29sKgIIAzIHECMYsAMYJzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYRzIKEAAYsAMY1gQYR0jgS1AAWABwAXgAkAEAmAGFAaABhQGqAQMwLjG4AQHIAQCYAgGgAgaYAwCIBgGQBgiSBwExoAffBbIHALgHAMIHAzItMcgHBA&sclient=gws-wiz-serp" target="_blank" rel="noopener noreferrer"><img src="/assets/images/summer school.jpg" width="90px"></a> <br>QGSS</div>
+    <div class="marker" style="top: 80%; left: 50%;"><a href="https://roadmap.sh/rust" target="_blank" rel="noopener noreferrer"><img src="/assets/images/rust.png" width="90px"></a> <br>Rust</div>
+    <div class="marker focus-marker" style="top: 75%; left: 30%;"><a href="https://quantum.cloud.ibm.com/learning/en" target="_blank" rel="noopener noreferrer"><img src="/assets/images/lens.png" width="90px"></a> <br> Focused Topics
+    <div class="focus">
+      <strong>Topics :</strong><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/quantum-safe-cryptography" style="color: azure;" target="_blank" rel="noopener noreferrer">Quantum Cryptography</a><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/quantum-machine-learning" style="color: azure;" target="_blank" rel="noopener noreferrer">Quantum Machine Learning</a><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/variational-algorithm-design" style="color: azure;" target="_blank" rel="noopener noreferrer">Variational Algorithms Design</a><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/quantum-chem-with-vqe" style="color: azure;" target="_blank" rel="noopener noreferrer">Quantum Chemistry with VQE</a><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/quantum-diagonalization-algorithms" style="color: azure;" target="_blank" rel="noopener noreferrer">Quantum Diagonalization Algorithms</a><br>
+      <a href="https://quantum.cloud.ibm.com/learning/en/courses/utility-scale-quantum-computing" style="color: azure;" target="_blank" rel="noopener noreferrer">Utility Scale Quantum Computing</a>
+    </div></div>
+    <div class="marker" style="top: 80%; left: 10%;"><a href="https://iqti.iisc.ac.in/academics/" target="_blank" rel="noopener noreferrer"><img src="/assets/images/gate.jpg" width="140px"></a><br>GATE</div>
+    <div class="marker" style="top: 40%; left: 85%;"><a href="https://www.ibm.com/quantum/community#advocates" target="_blank" rel="noopener noreferrer"><img src="/assets/images/advocate.jpg" width="90px"></a><br>Qiskit Advocate</div>
+  </main>
+</div>
+
+</div>

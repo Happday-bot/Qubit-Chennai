@@ -1,0 +1,86 @@
+<app-nav></app-nav>
+
+<div class="events-wrapper" *ngIf="events">
+  <section class="header">
+    <h1>Qubit Club Events</h1>
+    <p>Stay updated with all our past, current, and upcoming quantum adventures.</p>
+  </section>
+
+ <section class="event-category" *ngIf="events.upcoming.length">
+  <h2>🎯 Upcoming Events</h2>
+  <div class="event-card-container">
+    <div class="event-card" *ngFor="let event of events.upcoming">
+      <img [src]="event.posterPath" alt="{{ event.title }}" />
+      <h3>{{ event.title }}</h3><br>
+      <div><strong>Date/Time: </strong> {{ event.date }} at {{ event.time }}</div>
+      <div><strong>Venue: </strong> {{ event.venue }}</div>
+      <div><strong>Type: </strong> {{ event.type }}</div>
+      <div><strong>Registration: </strong> {{ event.registrationOpen }} → {{ event.registrationClose }}</div>
+      <a 
+          *ngIf="event.link"
+          [href]="event.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="register-link"
+        ><button class="register-btn">Register Now ↗
+      </button></a>
+    </div>
+  </div>
+</section>
+
+  <section class="event-category" *ngIf="events.ongoing.length">
+  <h2>🔥 Ongoing Events</h2>
+  <div class="event-card-container">
+    <div class="event-card" *ngFor="let event of events.ongoing">
+      <img [src]="event.posterPath" alt="{{ event.title }}" />
+      <h3>{{ event.title }}</h3><br>
+      <div><strong>Date/Time: </strong> {{ event.date }} at {{ event.time }}</div>
+      <div><strong>Venue: </strong> {{ event.venue }}</div>
+      <div><strong>Type: </strong> {{ event.type }}</div>
+      <div><strong>Registration: </strong> {{ event.registrationOpen }} → {{ event.registrationClose }}</div>
+      <a 
+          *ngIf="event.link"
+          [href]="event.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="register-link"
+        ><button class="register-btn">Register Now ↗
+      </button></a>
+    </div>
+  </div>
+</section>
+
+<section class="event-category" *ngIf="events.completed.length">
+  <h2>📚 Past Events</h2>
+  <div class="event-card-container">
+    <div class="event-card" *ngFor="let event of events.completed">
+      <img [src]="event.posterPath" alt="{{ event.title }}" />
+      <h3>{{ event.title }}</h3><br>
+      <div><strong>Date/Time: </strong> {{ event.date }} at {{ event.time }}</div>
+      <div><strong>Venue: </strong> {{ event.venue }}</div>
+      <div><strong>Type: </strong> {{ event.type }}</div>
+      <div><strong>Registration: </strong> {{ event.registrationOpen }} → {{ event.registrationClose }}</div>
+      <a 
+          *ngIf="event.link"
+          [href]="event.link"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="register-link"
+        ><button class="register-btn">Register Now ↗
+      </button></a>
+    </div>
+  </div>
+</section>
+
+<section class="event-category" *ngIf="loading">
+  <h2>Loading Events...</h2>
+  <p>Please wait while we fetch the quantum timeline ⏳</p>
+</section>
+
+<section *ngIf="!loading && !hasEvents">
+  <h2>No Events Available</h2>
+  <p>Stay tuned for updates!</p>
+</section>
+</div> 
+
+

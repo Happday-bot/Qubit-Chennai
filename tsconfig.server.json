@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/server",
+    "target": "es2020",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "types": ["node"]
+  },
+  "files": [
+    "src/main.server.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "./src/app/app.server.module#AppServerModule"
+  }
+}
+
+
+// npm run build:ssr  -> for build which is already done
+// npm run serve:ssr  -> for running in production evironment whenever you run this program

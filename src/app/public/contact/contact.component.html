@@ -1,0 +1,55 @@
+<app-nav></app-nav>
+
+<div class="contact-wrapper">
+  <section class="contact-intro">
+    <h1>Contact Qubit Club</h1>
+    <p>We’d love to hear from you. Reach out with questions, suggestions, or collaboration ideas!</p>
+  </section>
+
+  <section class="contact-details">
+    <div class="info-card">
+      <h3>Email</h3>
+      <p>alfredsam2006&#64;gmail.com</p>
+    </div>
+    <div class="info-card">
+      <h3>Phone</h3>
+      <p>+91 98765 43210</p>
+    </div>
+    <div class="info-card">
+      <h3>Campus Location</h3>
+      <p>Rajalakshmi Engineering College, Thandalam, Chennai 600 051</p>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <h2>Send a Message</h2>
+   <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="feedback.name"
+    placeholder="Your Name"
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    [(ngModel)]="feedback.email"
+    placeholder="Your Email"
+    required
+  />
+  <textarea
+    name="message"
+    [(ngModel)]="feedback.message"
+    placeholder="Your Message"
+    rows="5"
+    required
+  ></textarea>
+  <button type="submit" class="btn-secondary">Submit</button>
+</form>
+
+<p *ngIf="successMessage">{{ successMessage }}</p>
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  </section>
+</div>

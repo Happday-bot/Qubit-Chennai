@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+
+<div class="member-dashboard">
+  <h2>👥 Member Management</h2>
+
+  <!-- Toggle Button: Top Right -->
+  <button class="toggle-btn" (click)="showPending = !showPending">
+    {{ showPending ? '🔽 Hide' : '🔼 Show' }} Pending Applications ({{ applications.length }})
+  </button>
+
+  <!-- Active Members Section -->
+  <section *ngIf="!showPending">
+    <h3>✅ Active Members</h3>
+    <div class="card-grid">
+      <div class="member-card" *ngFor="let member of members">
+        <div>
+          <h4>{{ member.name }}</h4>
+          <p><strong>Contact:</strong> {{ member.contact }}</p>
+          <small>Joined: {{ member.joinedOn }}</small>
+        </div>
+        <button class="remove-btn" (click)="removeMember(member.id)">🗑️ Remove</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pending Applications Section -->
+  <section *ngIf="showPending">
+    <h3>🕓 Pending Applications</h3>
+    <div class="card-grid">
+      <div class="member-card pending" *ngFor="let app of applications">
+        <div>
+          <h4>{{ app.name }}</h4>
+          <p><strong>Contact:</strong> {{ app.contact }}</p>
+          <small>Applied: {{ app.appliedOn }}</small>
+        </div>
+        <div class="btn-row">
+          <button class="approve-btn" (click)="approveApplication(app.id)">✅ Approve</button>
+          <button class="reject-btn" (click)="rejectApplication(app.id)">❌ Reject</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

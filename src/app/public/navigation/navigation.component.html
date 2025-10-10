@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="logo">Qubit Club</div>
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/blog">Blog</a></li>
+    <li><a routerLink="/events">Events</a></li>
+    <li><a routerLink="/gallery">Gallery</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+    <li *ngIf="isCoreUser">
+      <a routerLink="/admin/events">Admin</a>
+    </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/student/profile">My Profile</a>
+    </li>
+
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/login" style="color: rgb(82, 255, 2);">Sign In</a>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <a routerLink="/sign-up" style="color: rgb(98, 194, 3);">Sign Up</a>
+    </li>
+
+  </ul>
+</nav>
+<button class="fab" routerLink="/blog/write">Add a Blog</button>

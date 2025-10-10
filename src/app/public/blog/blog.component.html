@@ -1,0 +1,28 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <h1>All Blogs</h1>
+
+  <div *ngIf="loading" class="loading">Loading blogs...</div>
+
+  <div class="blogs-grid">
+    <div *ngFor="let blog of blogs" class="blog-card">
+      <img [src]="blog.cover_image" alt="{{ blog.title }}" class="cover-image" />
+
+      <div class="blog-content">
+        <h5>{{ blog.title }}</h5>
+        <p class="meta">
+          <strong>Author: </strong>
+          <a [href]="blog.author_profile" target="_blank"><b>{{ blog.author_name }}</b></a><br>
+           <strong>Published Date: </strong> {{ blog.published_date | date:'mediumDate' }} <br>
+           <strong>Read Time: </strong> 
+           {{ blog.reading_time }}
+        </p>
+
+        <!-- <p class="description">{{ blog.description }}</p> -->
+
+        <a [href]="blog.canonical_url" target="_blank" class="read-more">Read Full Article →</a>
+      </div>
+    </div>
+  </div>
+</div>

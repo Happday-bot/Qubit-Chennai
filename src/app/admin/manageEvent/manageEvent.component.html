@@ -1,0 +1,68 @@
+<app-nav></app-nav>
+<div class="manage-events">
+  <h2>📅 Manage Events</h2>
+
+  <button class="add-btn" (click)="toggleForm()">
+    {{ showForm ? '✖ Cancel' : '➕ Add Event' }}
+  </button>
+
+  <form *ngIf="showForm" (ngSubmit)="saveEvent()" #eventForm="ngForm" class="event-form">
+    <input class="inputs" type="text" name="title" [(ngModel)]="event.title" placeholder="Event Title" required />
+
+    <textarea name="description" [(ngModel)]="event.description" placeholder="Event Description" required></textarea>
+    <div>Event Date and Time</div>
+    <div class="row">
+      <input type="date" name="date" [(ngModel)]="event.date" required />
+      <input type="time" name="time" [(ngModel)]="event.time" required />
+    </div>
+
+    <input type="text" name="venue" [(ngModel)]="event.venue" placeholder="Venue or Platform" required />
+
+    <select name="type" [(ngModel)]="event.type" required>
+      <option value="">Select Event Type</option>
+      <option>Workshop</option>
+      <option>Seminar</option>
+      <option>Challenge</option>
+      <option>Meeting</option>
+    </select>
+    <div>Registration Duration</div>
+    <div class="row">
+      <input type="date" name="regOpen" [(ngModel)]="event.registrationOpen" required />
+      <input type="date" name="regClose" [(ngModel)]="event.registrationClose" required />
+    </div>
+    <div>Upload Poster</div>
+    <input type="file" (change)="onPosterSelect($event)" accept="image/*" />
+    <input class="inputs" type="text" name="link" [(ngModel)]="event.link" placeholder="Event Registration Link" required />
+    <div class="preview" *ngIf="previewUrl">
+      <img [src]="previewUrl" alt="Event Poster" />
+    </div>
+
+    <button type="submit">{{ editMode ? '💾 Update Event' : '📤 Create Event' }}</button>
+  </form>
+
+  <div class="event-grid">
+  <div class="event-tile" *ngFor="let evt of events; let i = index">
+    <div class="event-image" *ngIf="evt.posterPath">
+      <img [src]="evt.posterPath" alt="Poster for {{ evt.title }}" />
+    </div>
+
+    <div class="event-info">
+      <h3>{{ evt.title }}</h3>
+      <p class="event-description">{{ evt.description }}</p>
+
+      <ul class="meta">
+        <li><strong>📅</strong> {{ evt.date }} at {{ evt.time }}</li>
+        <li><strong>📍</strong> {{ evt.venue }}</li>
+        <li><strong>📝</strong> {{ evt.type }}</li>
+        <li><strong>📌 Reg:</strong> {{ evt.registrationOpen }} → {{ evt.registrationClose }}</li>
+      </ul>
+
+      <div class="button-row">
+        <button class="edit-btn" (click)="editEvent(i)">✏️ Edit</button>
+        <button class="delete-btn" (click)="deleteEvent(i)">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

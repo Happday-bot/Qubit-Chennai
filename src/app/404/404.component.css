@@ -1,0 +1,64 @@
+.oops-wrapper {
+  height: 91vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top left, #141e30, #243b55);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.oops-content {
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  animation: float 3s ease-in-out infinite;
+}
+
+.emoji {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.oops-content h1 {
+  font-size: 72px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.oops-content h2 {
+  font-size: 26px;
+  margin: 12px 0;
+}
+
+.oops-content p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.home-btn {
+  background-color: #5e60ce;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #4a4ccb;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}

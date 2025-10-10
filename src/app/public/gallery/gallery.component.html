@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+
+<div class="gallery-wrapper">
+  <section class="header">
+    <h1>Qubit Club Gallery</h1>
+    <p>Explore snapshots from our journey through quantum innovation and collaboration.</p>
+  </section>
+
+  <section class="image-grid">
+    <div *ngFor="let img of galleryImages" class="image-card">
+    <img [src]="img.src" [alt]="img.alt" widht="200px" height="200px" />
+    <p>{{ img.caption }}</p>
+  </div>
+  </section>
+</div>

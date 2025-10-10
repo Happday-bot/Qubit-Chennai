@@ -1,0 +1,31 @@
+<app-nav></app-nav>
+
+<div class="feedback-wrapper">
+  <h1>Qubit Learning</h1>
+  <h2>📣 Feedbacks Received</h2>
+  <div class="feedback-list-container">
+    <ul>
+    <li *ngFor="let feedback of feedbacks; index as i" class="over">
+      <span>{{ feedback.message }}</span>
+      <button (click)="confirmDelete(i)">🗑️ Delete</button>
+    </li>
+  </ul>
+  </div>
+
+  <!-- Password Prompt Modal -->
+  <div class="password-prompt" *ngIf="showPasswordPrompt">
+    <div class="modal">
+      <h3>🔐 Enter Password</h3>
+      <input
+        type="password"
+        [(ngModel)]="enteredPassword"
+        placeholder="Password"
+      />
+      <div class="modal-actions">
+        <button (click)="validateAndDelete()">Confirm</button>
+        <button (click)="cancelDelete()">Cancel</button>
+      </div>
+      <div class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</div>
+    </div>
+  </div>
+</div>

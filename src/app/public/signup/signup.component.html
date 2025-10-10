@@ -1,0 +1,126 @@
+<mat-tab-group [(selectedIndex)]="currentStep">
+  <mat-tab label="Step 1: Personal">
+    <form [formGroup]="personalForm" (ngSubmit)="goToWorkForm()" class="form-section">
+      <h2>Step 1: Personal Information</h2>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" formControlName="password" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="tel" formControlName="phone" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="other">Prefer Not to Say</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!personalForm.valid">
+        Next
+      </button>
+            <button class="home" (click)="goToHome()">
+  ← Back to Home
+</button>
+    </form>
+  </mat-tab>
+
+  <!-- Placeholder for other tabs -->
+  <mat-tab label="Step 2: Academic Info">
+  <form [formGroup]="workForm" (ngSubmit)="goToQuantumForm()" class="form-section">
+    <h2>Step 2: Academic / Work Information</h2>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Year of Study / Position</mat-label>
+      <mat-select formControlName="position" required>
+        <mat-option value="1st Year">1st Year</mat-option>
+        <mat-option value="2nd Year">2nd Year</mat-option>
+        <mat-option value="3rd Year">3rd Year</mat-option>
+        <mat-option value="4th Year">4th Year</mat-option>
+        <mat-option value="Postgrad">Postgraduate</mat-option>
+        <mat-option value="Research Scholar">Research Scholar</mat-option>
+        <mat-option value="Faculty">Faculty</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Organization / College Name</mat-label>
+      <input matInput formControlName="institution" />
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-button color="accent" type="button" (click)="currentStep = 0">⬅ Back</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!workForm.valid">Next ➡</button>
+    </div>
+          <button class="home" (click)="goToHome()">
+  ← Back to Home
+</button>
+  </form>
+</mat-tab>
+
+
+<mat-tab label="Step 3: Quantum Info">
+  <form [formGroup]="quantumForm" (ngSubmit)="submitFinalForm()" class="form-section">
+    <h2>Step 3: Quantum Computing Knowledge</h2>
+    <p>Kindly be more open and expressive for this will help us filter you</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Have you studied Quantum Computing?</mat-label>
+      <mat-select formControlName="hasKnowledge" required>
+        <mat-option value="yes">Yes</mat-option>
+        <mat-option value="no">No</mat-option>
+        <mat-option value="self-learning">Self Learning</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tools / Platforms Known (Qiskit, Cirq, etc.)</mat-label>
+      <input matInput formControlName="toolsKnown" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Areas of Interest</mat-label>
+      <textarea matInput formControlName="interests" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Why do you want to join Qubit?</mat-label>
+      <textarea matInput formControlName="motivation" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Are you also a qiskit Advocate ? (Optional) </mat-label>
+      <input matInput formControlName="advocate" placeholder="Enter you Linkedin post on your advocate achievement"/>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-button color="accent" type="button" (click)="currentStep = 1">⬅ Back</button>
+             <button mat-raised-button color="primary"
+              [disabled]="!isAllFormsValid"
+              (click)="submitFinalForm()">
+        Submit
+      </button>
+    </div>
+      <button class="home" (click)="goToHome()">
+  ← Back to Home
+</button>
+  </form>
+
+</mat-tab>
+</mat-tab-group>
