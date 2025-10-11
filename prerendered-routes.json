@@ -1,20 +1,3 @@
 {
-  "routes": {
-    "/qubit": {},
-    "/qubit/about": {},
-    "/qubit/admin/events": {},
-    "/qubit/admin/feedback": {},
-    "/qubit/admin/gallery": {},
-    "/qubit/admin/members": {},
-    "/qubit/blog": {},
-    "/qubit/blog/write": {},
-    "/qubit/contact": {},
-    "/qubit/events": {},
-    "/qubit/gallery": {},
-    "/qubit/home": {},
-    "/qubit/login": {},
-    "/qubit/sign-up": {},
-    "/qubit/student/profile": {},
-    "/qubit/tab-release-info": {}
-  }
+  "routes": {}
 }
