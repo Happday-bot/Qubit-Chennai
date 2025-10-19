@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8000', // Update this to your production API URL
+  apiUrl: 'https://qubitbackend.onrender.com', // Update this to your production API URL
 };
